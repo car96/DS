@@ -5,7 +5,7 @@ public class GuessingWords {
 	public static void main(String[] args){
 
 		
-		String input = JOptionPane.showInputDialog("Ingrese su pene: ");
+		String input = JOptionPane.showInputDialog("Type in the words: ");
 		char array[] = {'a', 'e', 'i', 'o', 'u'};
 		Queue queue = new Queue();	
 
