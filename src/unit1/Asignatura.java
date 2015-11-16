@@ -43,9 +43,7 @@ public class Asignatura {
     public boolean equals(Object ob){
         if(ob instanceof Asignatura){
             if(((Asignatura) ob).name.equals(name)){
-                if(((Asignatura) ob).note == note){
                     return true;
-                }
             }
         }
         return false;
