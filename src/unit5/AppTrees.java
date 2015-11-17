@@ -18,8 +18,14 @@ public class AppTrees {
         
         PrintingVisitor visitor = new PrintingVisitor();
         InOrder inOrder = new InOrder(visitor);
+        PreOrder preOrder = new PreOrder(visitor);
+        PostOrder postOrder = new PostOrder(visitor);
         
         tA.depthFirstTraversal(inOrder);
+        System.out.println("======================");
+        tA.depthFirstTraversal(preOrder);
+        System.out.println("======================");
+        tA.depthFirstTraversal(postOrder);
         
     }
     

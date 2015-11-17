@@ -10,12 +10,18 @@ package unit1;
  * @author carlos
  */
 public class Asignatura {
+
     private String name;
     private int note;
-    
-    public Asignatura(String name, int note){
+
+    public Asignatura(String name, int note) throws NumberFormatException{
         this.name = name;
-        this.note = note;
+        if (note >= 0 && note <= 100) {
+            this.note = note;
+        }
+        else{
+            throw new NumberFormatException();
+        }
     }
 
     public String getName() {
@@ -33,27 +39,27 @@ public class Asignatura {
     public void setNote(int note) {
         this.note = note;
     }
-    
+
     @Override
-    public String toString(){
-        return "Name of the class: "+name+"\nNote: "+note;
+    public String toString() {
+        return "Name of the class: " + name + "\nNote: " + note;
     }
-    
+
     @Override
-    public boolean equals(Object ob){
-        if(ob instanceof Asignatura){
-            if(((Asignatura) ob).name.equals(name)){
-                    return true;
+    public boolean equals(Object ob) {
+        if (ob instanceof Asignatura) {
+            if (((Asignatura) ob).name.equals(name)) {
+                return true;
             }
         }
         return false;
     }
-    
-    public String getResultado(){
-        if(note>=70){
+
+    public String getResultado() {
+        if (note >= 70) {
             return "Approved";
         }
         return "Failed";
     }
-    
+
 }
