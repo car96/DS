@@ -14,25 +14,21 @@ public class BinaryTree implements Tree {
     protected Object key;
     protected BinaryTree left;
     protected BinaryTree right;
+    protected int height = 0;
 
     public BinaryTree(Object key, BinaryTree left, BinaryTree right) {
+        this.key = key;
+        this.left = left;
+        this.right = right;
         
         if (key != null) {
             if (left == null) {
                 left = new BinaryTree();
-            } else {
-                this.left = left;
-            }
+            } 
             if (right == null) {
                 right = new BinaryTree();
-            } else {
-                this.right = right;
-            }
-        } else{
-            this.left = left;
-            this.right = right;
-        }
-        this.key = key;
+            } 
+        } 
     }
 
     /**
@@ -52,15 +48,31 @@ public class BinaryTree implements Tree {
     public BinaryTree(Object key) {
         this(key, new BinaryTree(), new BinaryTree());
     }
+    
+    /**
+     * Method to drop all elements in the three, and let it empty.
+     */
+    public void purge(){
+        key = null;
+        left=null;
+        right=null;
+    }
 
     @Override
     public Object getKey() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return key;
     }
 
     @Override
     public Tree getSubtree(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        switch (i) {
+            case 0:
+                return left;
+            case 1:
+                return right;
+            default:
+                throw new IllegalArgumentException();
+        }
     }
 
     @Override
@@ -75,12 +87,18 @@ public class BinaryTree implements Tree {
 
     @Override
     public int getHeight() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return height;
     }
 
     @Override
     public void depthFirstTraversal(PrePostVisitor visitor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(!isEmpty()){
+            visitor.preVisit(key);
+            left.depthFirstTraversal(visitor);
+            visitor.inVisit(key);
+            right.depthFirstTraversal(visitor);
+            visitor.postVisit(key);
+        }
     }
 
 }

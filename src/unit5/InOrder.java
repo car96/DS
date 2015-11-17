@@ -2,7 +2,7 @@ package unit5;
 
 public class InOrder extends AbstractPrePostVisitor{
 	
-	private Visitor visitor;
+	protected Visitor visitor;
 
 	public InOrder(Visitor visitor){
 		this.visitor = visitor;
