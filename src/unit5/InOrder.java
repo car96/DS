@@ -8,7 +8,7 @@ public class InOrder extends AbstractPrePostVisitor{
 		this.visitor = visitor;
 	}
         
-	public void InVisit(Object ob){
+	public void inVisit(Object ob){
 		visitor.visit(ob);
 	}
 
