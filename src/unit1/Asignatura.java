@@ -42,7 +42,7 @@ public class Asignatura {
 
     @Override
     public String toString() {
-        return "Name of the class: " + name + "\nNote: " + note;
+        return name + "\nNote: " + note;
     }
 
     @Override

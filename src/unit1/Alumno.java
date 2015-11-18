@@ -24,13 +24,13 @@ public class Alumno extends Persona {
         boolean repited = false;
         if (asignatura != null) {
 
-            for (int i = 0; i < nOC; i++) {
-                if (array[i] == asignatura) {
+            for (int i = 0; i <= nOC; i++) {
+                if (array[i].getName().equals(asignatura.getName())) {
                     repited = true;
                     break;
                 }
-
             }
+            
             if (!repited) {
                 nOC++;
                 array[nOC] = asignatura;
@@ -41,10 +41,16 @@ public class Alumno extends Persona {
     @Override
     public String toString() {
         String str = "";
+        int avg = 0;
         for (int i = 0; i <= nOC; i++) {
-            str += array[i].toString() + "\n" + array[i].getResultado() + "\n\n";
+            str += array[i].toString() + "\n" + array[i].getResultado();
+            avg += array[i].getNote();
+            if(i <= nOC){
+                str +="\n";
+            }
         }
-        return "Student name: " + name + "\nSur Name: " + surName + "\nMaiden Name: "
-                + "Age: " + age + "\nClasses: \n" + str;
+        avg = avg/(nOC+1);
+        return "Student: " + name +" "+surName +" "+maidenName
+                + "\nAge: " + age + "\nClasses: \n\n" + str+"\nAverage: "+avg+"\n\n";
     }
 }
