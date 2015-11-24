@@ -1,20 +1,18 @@
-
 package unit2;
 
+public class CircularQueue implements IQueue {
 
-
-public class CircularQueue implements IQueue{
     Object array[];
     int head;
     int tail;
-    
-    public CircularQueue(){
+
+    public CircularQueue() {
         array = new Object[10];
         head = -1;
         tail = -1;
     }
-    
-    public CircularQueue(int n){
+
+    public CircularQueue(int n) {
         array = new Object[n];
         head = -1;
         tail = -1;
@@ -22,7 +20,7 @@ public class CircularQueue implements IQueue{
 
     @Override
     public Object getFront() {
-        if(!isEmpty()){
+        if (!isEmpty()) {
             return array[head];
         }
         return null;
@@ -30,7 +28,7 @@ public class CircularQueue implements IQueue{
 
     @Override
     public Object getRear() {
-        if(!isEmpty()){
+        if (!isEmpty()) {
             return array[tail];
         }
         return null;
@@ -38,15 +36,20 @@ public class CircularQueue implements IQueue{
 
     @Override
     public void enqueue(Object ob) {
-        if(!isFull()){
-            array[tail] = ob;
-            tail++;
+        if (!isFull()) {
+            if (tail == array.length - 1 && head > 0) {
+                tail = 0;
+            } else if (tail == 0 && head == -1) {
+                tail++;
+                array[tail] = ob;
+                head = 0;
+            }
         }
     }
 
     @Override
     public Object dequeue() {
-        if(!isEmpty()){
+        if (!isEmpty()) {
             Object tmp = array[head];
             head--;
             return tmp;
@@ -61,7 +64,10 @@ public class CircularQueue implements IQueue{
 
     @Override
     public boolean isFull() {
-        return tail == (head-1);
+        if((head == 0 && tail == array.length-1) || (head == tail+1) ){
+            return true;
+        }
+        return false;
     }
-    
+
 }
