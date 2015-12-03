@@ -13,16 +13,19 @@ public class Alumno implements Comparable{
     private String nombre;
     private int semestre;
     private double promedio;
+    protected static int cantAlumnos;
     
     public Alumno(String nombre, int semestre){
         this.nombre = nombre;
         this.semestre = semestre;
+        cantAlumnos++;
     }
     
     public Alumno(String nombre, int semestre, double promedio){
         this.nombre = nombre;
         this.semestre = semestre;
         this.promedio = promedio;
+        cantAlumnos++;
     }
 
     public String getNombre() {
@@ -79,4 +82,11 @@ public class Alumno implements Comparable{
         }
         throw new IllegalArgumentException();
     }
+
+    @Override
+    public String toString() {
+        return "Alumno{" + "nombre=" + nombre + ", semestre=" + semestre + ", promedio=" + promedio + '}';
+    }
+    
+    
 }
